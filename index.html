@@ -6,10 +6,9 @@
     <title>WordArt Embed</title>
 </head>
 <body>
-#16300
 <button id="download-btn">Download</button>
-
-<div style="width: 16300px; height: 16300px;" data-wordart-src="//cdn.wordart.com/json/0jrzevyk1zrb" data-wordart-show-attribution></div>
+#16300
+<div id="wordart-container" style="width: 16300px; height: 16300px;" data-wordart-src="//cdn.wordart.com/json/0jrzevyk1zrb" data-wordart-show-attribution></div>
 
 <script src="//cdn.wordart.com/wordart.min.js" async defer></script>
 <script>
@@ -17,14 +16,13 @@
         var downloadBtn = document.getElementById('download-btn');
 
         downloadBtn.addEventListener('click', function () {
-            var canvas = document.querySelector('#wordart-container canvas');
+            var wordartContainer = document.getElementById('wordart-container');
+            var canvas = wordartContainer.querySelector('canvas');
             if (canvas) {
                 var link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
                 link.download = 'wordart.png';
                 link.click();
-            } else {
-                alert('WordArt image is not loaded yet.');
             }
         });
     });
